@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}Start a New Topic{% endblock %}
+{% block breadcrumb %}
+    <li class="breadcrumb-item">
+        <a href="{% url 'home' %}">Boards</a>
+    </li>
+    <li class="breadcrumb-item">
+        <a href="{% url 'board_topics' board.pk %}">{{ board.name }}</a>
+    </li>
+    <li class="breadcrumb-item active">New Topic</li>
+{% endblock %}
+{% block content %}
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="id_subject">Subject</label>
+            <input type="text" class="form-control" id="id_subject" name="subject">
+        </div>
+        <div class="form-group">
+            <label for="id_message">Messaged</label>
+            <textarea name="message"
+                      id="id_message"
+                      cols="10"
+                      rows="10"
+                      class="form-control">messages</textarea>
+        </div>
+        <button type="submit" class="btn btn-success">Post</button>
+    </form>
+{% endblock %}
